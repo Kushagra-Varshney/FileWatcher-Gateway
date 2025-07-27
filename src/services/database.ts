@@ -6,7 +6,7 @@ class DatabaseService {
 
   constructor(mongoUri: string, dbName?: string) {
     this.mongoUri = mongoUri;
-    this.dbName = dbName || 'nazar-analytics';
+    this.dbName = dbName || 'FileWatcher';
   }
 
   async connect(): Promise<void> {

@@ -21,7 +21,7 @@ class KafkaService {
       console.log('Kafka producer connected successfully');
     } catch (error) {
       console.error('Failed to connect to Kafka:', error);
-      throw error;
+      // throw error;
     }
   }
 
@@ -31,7 +31,7 @@ class KafkaService {
       console.log('Kafka producer disconnected');
     } catch (error) {
       console.error('Failed to disconnect from Kafka:', error);
-      throw error;
+      // throw error;
     }
   }
 
@@ -50,7 +50,7 @@ class KafkaService {
       console.log(`Message published for file: ${message.filePath}`);
     } catch (error) {
       console.error('Failed to publish message:', error);
-      throw error;
+      // throw error;
     }
   }
 }
