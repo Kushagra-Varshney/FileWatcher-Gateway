@@ -25,10 +25,12 @@ class MessageController {
 
       await this.kafkaService.publishMessage(message);
 
+      const kafkaStatus = this.kafkaService.getConnectionStatus();
       res.status(200).json({ 
         success: true, 
-        message: 'Message published successfully',
-        messageId: `${message.filePath}-${message.timestamp}`
+        message: kafkaStatus ? 'Message published successfully' : 'Message received but Kafka unavailable',
+        messageId: `${message.filePath}-${message.timestamp}`,
+        kafkaConnected: kafkaStatus
       });
     } catch (error) {
       console.error('Error processing message:', error);

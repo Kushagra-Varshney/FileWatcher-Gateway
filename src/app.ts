@@ -95,18 +95,23 @@ class App {
   public async start(): Promise<void> {
     try {
       await this.databaseService.connect();
-      await this.kafkaService.connect();
-      
-      const port = process.env.PORT || 3000;
-      this.app.listen(port, () => {
-        console.log(`🚀 NazarTs Gateway server started on port ${port}`);
-        console.log(`📊 Dashboard available at http://localhost:${port}/api/dashboard/analytics`);
-        console.log(`💚 Health check at http://localhost:${port}/api/dashboard/health`);
-      });
     } catch (error) {
-      console.error('Failed to start server:', error);
+      console.error('Failed to connect to database:', error);
       process.exit(1);
     }
+
+    try {
+      await this.kafkaService.connect();
+    } catch (error) {
+      console.warn('Failed to connect to Kafka, continuing without Kafka:', error);
+    }
+      
+    const port = process.env.PORT || 3000;
+    this.app.listen(port, () => {
+      console.log(`🚀 NazarTs Gateway server started on port ${port}`);
+      console.log(`📊 Dashboard available at http://localhost:${port}/api/dashboard/analytics`);
+      console.log(`💚 Health check at http://localhost:${port}/api/dashboard/health`);
+    });
   }
 
   public async stop(): Promise<void> {
