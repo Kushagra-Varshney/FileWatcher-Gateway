@@ -17,7 +17,7 @@ COPY tsconfig.json ./
 COPY src/ ./src/
 
 # Install TypeScript globally and build dependencies for build process
-RUN sudo npm install -g typescript && \
+RUN npm install -g typescript && \
     npm install --only=dev && \
     npm run build && \
     npm prune --production
