@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const uri = 'mongodb+srv://feedthebackuser:Captchalauda1@cluster0.ut7nc1o.mongodb.net/FileWatcher?retryWrites=true&w=majority&appName=Cluster0';
+const uri = '';
 const dbName = 'FileWatcher';
 const collectionName = 'processed_files';
 
