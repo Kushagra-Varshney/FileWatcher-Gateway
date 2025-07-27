@@ -103,7 +103,8 @@ class AnalyticsService {
       changeType: msg.changeType,
       timestamp: msg.timestamp,
       size: msg.size,
-      isDirectory: msg.isDirectory
+      isDirectory: msg.isDirectory,
+      clientMacAddress: msg.clientMacAddress
     }));
   }
 
